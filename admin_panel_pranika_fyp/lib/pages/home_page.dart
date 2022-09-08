@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tabnavigator/tabnavigator.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
+class HomePage extends StatefulWidget {
+  const HomePage({
     Key? key,
   }) : super(key: key);
 
@@ -16,14 +16,14 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<HomePage> {
   final _tabController = StreamController<AppTab>.broadcast();
-  final _initTab = AppTab.feed;
+  final _initTab = AppTab.home;
 
   Stream<AppTab> get tabStream => _tabController.stream;
 
   final _map = <AppTab, TabBuilder>{
-    AppTab.feed: () {
+    AppTab.home: () {
       return TabOne();
     },
     AppTab.colors: () {
@@ -102,14 +102,14 @@ class _MyHomePageState extends State<MyHomePage> {
 class AppTab extends TabType {
   const AppTab._(int value) : super(value);
 
-  static const feed = AppTab._(0);
+  static const home = AppTab._(0);
   static const colors = AppTab._(1);
   static const info = AppTab._(2);
 
   static AppTab byValue(int value) {
     switch (value) {
       case 0:
-        return feed;
+        return home;
       case 1:
         return colors;
       case 2:
